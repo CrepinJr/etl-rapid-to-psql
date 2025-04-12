@@ -54,11 +54,11 @@ def joke_exists(conn, setup, delivery):
 def load(dataframe):
     try:
         conn = psycopg2.connect(
-            dbname="etl_db",
-            user="etl_user",
-            password="EtlUser2024!",
-            host="localhost",
-            port="5432"
+            dbname=os.getenv("PG_DATABASE"),
+            user=os.getenv("PG_USERNAME"),
+            password=os.getenv("PG_PASSWORD"),
+            host=os.getenv("PG_HOST"),
+            port=os.getenv("PG_PORT")
         )
 
         for _, row in dataframe.iterrows():
