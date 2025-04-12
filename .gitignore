@@ -1,0 +1,6 @@
+# Fichiers à ignorer
+.env
+__pycache__/
+*.pyc
+*.log
+.vscode/
