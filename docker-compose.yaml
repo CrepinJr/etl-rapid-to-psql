@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  etl:
+    build: .
+    container_name: etl_runner
+    env_file: .env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+    container_name: pg_etl
+    restart: always
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
